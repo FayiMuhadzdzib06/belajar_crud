@@ -16,6 +16,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, Helvetica, sans-serif;
+            user-select: none;
         }
 
         h1 {
@@ -106,6 +107,53 @@
         .bk {
             left: 295px;
         }
+        .tambahdata {
+            position: absolute;
+            width: 120px;
+            height: 50px;
+            background-color: #fff;
+            border: 2px solid rgba(0, 0, 0, 0.5);
+            top: 50px;
+            right: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+        .tambahdata .kotak {
+            width: 100%;
+            height: calc(100% + 70px);
+            background-color: rgb(34, 34, 34);
+            position: absolute;
+            top: 50px;
+            display: flex;
+            flex-direction: column;
+            display: none;
+            border-radius: 5px;
+        }
+        .tambahdata:hover .kotak {
+            display: block;
+        }
+        .tambahdata .kotak a {
+            text-decoration: none;
+        }
+        .tambahdata .kotak a li {
+            width: 100%;
+            height: 32px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 13px;
+        }
+        .tambahdata .kotak a li:nth-child(1){
+            margin-top: 5px;
+        }
+        .tambahdata .kotak a li:hover{
+            background-color: red;
+        }
     </style>
 </head>
 
@@ -117,8 +165,8 @@
         <table class="admin" border="1" cellspacing="0">
             <tr>
                 <th>No</th>
+                <th>Id Admin</th>
                 <th>username</th>
-                <th>passsword</th>
             </tr>
 
             <?php
@@ -128,8 +176,8 @@
             ?>
                 <tr>
                     <td><?php echo $no++ ?></td>
+                    <td><?php echo $d['id_admin'] ?></td>
                     <td><?php echo $d['username'] ?></td>
-                    <td><?php echo $d['password'] ?></td>
                 </tr>
             <?php
             }
@@ -169,21 +217,20 @@
         <table class="buku" border="1" cellspacing="0">
             <tr>
                 <th>No</th>
-                <th>id_katalog</th>
-                <th>judul_buku</th>
-                <th>pengarang</th>
-                <th>thn_terbit</th>
-                <th>penerbit</th>
+                <th>Judul Buku</th>
+                <th>Pengarang</th>
+                <th>Tahun Terbit</th>
+                <th>Penerbit</th>
             </tr>
 
             <?php
 
+            $no = 1;
             $data = mysqli_query($connect, "SELECT * FROM buku");
             while ($d = mysqli_fetch_array($data)) {
             ?>
                 <tr>
-                    <td><?php echo $d['id_buku']  ?></td>
-                    <td><?php echo $d['id_katalog'] ?></td>
+                    <td><?php echo $no++ ?></td>
                     <td><?php echo $d['judul_buku'] ?></td>
                     <td><?php echo $d['pengarang'] ?></td>
                     <td><?php echo $d['thn_terbit'] ?></td>
@@ -197,6 +244,23 @@
     <button onclick="admin()" class="adm">ADMIN</button>
     <button onclick="anggota()" class="agt">ANGGOTA</button>
     <button onclick="buku()" class="bk">BUKU</button>
+
+    <div class="tambahdata">
+        Tambah Data
+        <div class="kotak">
+            <ul>
+                <a href="tambah_admin.php">
+                    <li>Admin</li>
+                </a>
+                <a href="tambah_anggota.php">
+                    <li>Anggota</li>
+                </a>
+                <a href="tambah_buku.php">
+                    <li>Buku</li>
+                </a>
+            </ul>
+        </div>
+    </div>
 
     <script>
         function admin() {
