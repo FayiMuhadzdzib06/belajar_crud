@@ -1,3 +1,7 @@
+<?php 
+    include 'koneksi.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,21 +35,27 @@
         table {
             margin: auto;
         }
+
         .admin {
             width: 500px;
         }
+
         .admin tr td {
             text-align: center;
         }
+
         .anggota {
             width: 800px;
         }
+
         .anggota tr td {
             text-align: center;
         }
+
         .buku {
             width: 900px;
         }
+
         .buku tr td {
             text-align: center;
         }
@@ -73,7 +83,7 @@
             border: none;
             border-bottom: 1px solid black;
             background-color: transparent;
-            transition: .5s;
+            transition: .1s;
         }
 
         button:hover {
@@ -112,13 +122,6 @@
             </tr>
 
             <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "db_perpusweb";
-
-            $connect = mysqli_connect($servername, $username, $password, $database);
-
             $no = 1;
             $data = mysqli_query($connect, "SELECT * FROM admin");
             while ($d = mysqli_fetch_array($data)) {
@@ -145,13 +148,6 @@
             </tr>
 
             <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "db_perpusweb";
-
-            $connect = mysqli_connect($servername, $username, $password, $database);
-
             $no = 1;
             $data = mysqli_query($connect, "SELECT * FROM anggota");
             while ($d = mysqli_fetch_array($data)) {
@@ -181,12 +177,6 @@
             </tr>
 
             <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "db_perpusweb";
-
-            $connect = mysqli_connect($servername, $username, $password, $database);
 
             $data = mysqli_query($connect, "SELECT * FROM buku");
             while ($d = mysqli_fetch_array($data)) {
