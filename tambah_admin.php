@@ -10,8 +10,8 @@
     <h2>Silahkan Tambah data admin</h2>
     <br>
     <form method="POST" action="proses_admin.php">
-        <label for="nama">Nama</label>
-        <input type="text" name="nama" id="nama">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
         <br>
         <label for="password">Password</label>
         <input type="password" name="password" id="password">

@@ -3,11 +3,11 @@
     include 'koneksi.php';
 
     // ambil data yang ad di form tambah.php
-    $nama = $_POST['nama'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
 
     //menginput data dari form ke database
-    $input = mysqli_query($connect, "INSERT INTO admin VALUES('', '$nama', '$password')");
+    $input = mysqli_query($connect, "INSERT INTO admin VALUES('', '$username', '$password')");
 
     if($input){
         echo "
